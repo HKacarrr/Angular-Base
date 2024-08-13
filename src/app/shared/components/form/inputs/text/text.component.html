@@ -1,0 +1,18 @@
+<div class="form-floating mb-3">
+  <input
+    [type]="inputAttr.type"
+    class="form-control"
+    required
+    [id]="inputAttr.id"
+    [placeholder]="inputAttr.placeholder"
+    [name]="inputAttr.inputName"
+    [(ngModel)]="inputAttr.inputName"
+    #name="ngModel"
+    value=""
+  />
+  <label [for]="inputAttr.id">{{ inputAttr.labelText }}</label>
+
+  <ng-container *ngIf="name.invalid && (name.dirty || name.touched)">
+    <app-input-error [errorMessage]="inputAttr.validationMessage" customErrorTextClass="mt-1" />
+  </ng-container>
+</div>

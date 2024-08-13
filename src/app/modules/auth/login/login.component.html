@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center align-items-center main-login-div">
+  <div class="col-md-5">
+
+<!--    <div>Date : {{ today|dateFormatter:'d.m.Y H:m:s' }}</div>-->
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-group">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+      <hr>
+
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" [id]="emailInputAttr.id" [placeholder]="emailInputAttr.placeholder" [name]="emailInputAttr.inputName" formControlName="{{ emailInputAttr.inputName }}">
+        <label [for]="emailInputAttr.id">{{ emailInputAttr.labelText }}</label>
+        <ng-container *ngIf="loginForm.get('loginEmail')?.hasError('required') && loginForm.get('loginEmail')?.dirty">
+          <app-input-error errorMessage="E-Mail is Required" customErrorTextClass="mt-1" />
+        </ng-container>
+      </div>
+
+
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" [id]="passwordInputAttr.id" [placeholder]="passwordInputAttr.placeholder" formControlName="{{ passwordInputAttr.inputName }}">
+        <label [for]="passwordInputAttr.id">{{ passwordInputAttr.labelText }}</label>
+        <ng-container *ngIf="loginForm.get('loginPassword')?.hasError('required') && loginForm.get('loginPassword')?.dirty">
+          <app-input-error errorMessage="Password is Required" customErrorTextClass="mt-1" />
+        </ng-container>
+      </div>
+
+<!--      <app-password-->
+<!--        [inputId]="passwordInputAttr.id"-->
+<!--        [placeholder]="passwordInputAttr.placeholder"-->
+<!--        [labelText]="passwordInputAttr.labelText"-->
+<!--      />-->
+
+      <div class="d-flex justify-content-between align-items-center">
+        <app-submit-button
+          [submitButtonId]="submitButtonAttr.submitButtonId"
+          [buttonText]="submitButtonAttr.buttonText"
+        />
+
+        <a href="/register">Sign Up</a>
+      </div>
+
+      <p class="mt-5 mb-3 text-muted">&copy; 2024–2025</p>
+    </form>
+  </div>
+</div>

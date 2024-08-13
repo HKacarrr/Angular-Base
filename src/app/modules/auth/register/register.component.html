@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center align-items-center main-register-div">
+  <div class="col-md-6 mt-4">
+
+    <!--    <div>Date : {{ today|dateFormatter:'d.m.Y H:m:s' }}</div>-->
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="form-group">
+      <h1 class="h3 mb-3 fw-normal">Sign up</h1>
+      <hr>
+
+      <div class="row">
+        <div class="col-md-6">
+          <app-text [inputAttr]="nameInputAttr" />
+<!--          <ng-container *ngIf="registerForm.get(nameInputAttr.formControlName)?.hasError('required') && registerForm.get(nameInputAttr.formControlName)?.dirty">-->
+<!--            <app-input-error [errorMessage]="nameInputAttr.validationMessage" customErrorTextClass="mt-1" />-->
+<!--          </ng-container>-->
+        </div>
+
+
+        <div class="col-md-6">
+          <app-text [inputAttr]="surnameInputAttr" />
+          <ng-container *ngIf="registerForm.get(surnameInputAttr.formControlName)?.hasError('required') && registerForm.get(surnameInputAttr.formControlName)?.dirty">
+            <app-input-error [errorMessage]="surnameInputAttr.validationMessage" customErrorTextClass="mt-1" />
+          </ng-container>
+        </div>
+      </div>
+
+
+      <div class="form-floating mb-3">
+        <input [type]="emailInputAttr.type" class="form-control" [id]="emailInputAttr.id" [placeholder]="emailInputAttr.placeholder" [name]="emailInputAttr.inputName" formControlName="{{ emailInputAttr.inputName }}">
+        <label [for]="emailInputAttr.id">{{ emailInputAttr.labelText }}</label>
+        <ng-container *ngIf="registerForm.get(emailInputAttr.formControlName)?.hasError('required') && registerForm.get(emailInputAttr.formControlName)?.dirty">
+          <app-input-error [errorMessage]="emailInputAttr.validationMessage" customErrorTextClass="mt-1" />
+        </ng-container>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <app-submit-button
+          [submitButtonId]="submitButtonAttr.submitButtonId"
+          [buttonText]="submitButtonAttr.buttonText"
+        />
+
+        <a href="/login">Sign In</a>
+      </div>
+
+      <p class="mt-5 mb-3 text-muted">&copy; 2024–2025</p>
+    </form>
+  </div>
+</div>

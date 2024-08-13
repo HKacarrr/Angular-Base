@@ -1,0 +1,5 @@
+<div class="form-floating mb-3" [formGroup]="parentForm">
+  <input type="email" class="form-control {{ customInputClass }}" [id]="inputId" [placeholder]="placeholder" [name]="inputName" formControlName="loginEmail">
+  <label [class]="customLabelClass" [for]="inputId">{{ labelText }}</label>
+</div>
+<app-input-error *ngIf="parentForm.get('loginEmail')?.hasError('required') && parentForm.get('loginEmail')?.dirty" />

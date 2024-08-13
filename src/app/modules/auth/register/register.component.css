@@ -1,0 +1,8 @@
+.main-register-div{
+  height: 100vh;
+}
+
+
+.col-md-6 .form-floating label{
+  left: 10px!important;
+}
